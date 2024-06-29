@@ -22,7 +22,12 @@
         <p v-show="users.length === 0 && query === ''" class="secondary-text">начните поиск</p>
         <p v-show="users.length === 0 && query !== ''" class="secondary-text">ничего не найдено</p>
         <div>
-          <CardPreview v-for="user in users" :key="user.id" :user="user" @select="handleSelect"/>
+          <CardPreview 
+            v-for="user in users" 
+            :key="user.id" 
+            :user="user" 
+            @select="handleSelect(user)"
+          />
         </div>
     </div>
   </div>
@@ -39,7 +44,7 @@ export default {
   },
   data() {
     return {
-      query: ''
+      query: '',
     };
   },
   computed: {
